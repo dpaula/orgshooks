@@ -1,8 +1,8 @@
-import green from '../../assets/images/green.png';
-import grow from '../../assets/images/grow.png';
-import jennyJack from '../../assets/images/jenny-jack.png';
-import potager from '../../assets/images/potager.png';
-import salad from '../../assets/images/salad.png';
+import green from '../../assets/produtores/green.png';
+import grow from '../../assets/produtores/grow.png';
+import jennyJack from '../../assets/produtores/jenny-jack.png';
+import potager from '../../assets/produtores/potager.png';
+import salad from '../../assets/produtores/salad.png';
 
 //retorna numero entre o minimo e o maximo
 const gerarNumeroAleatorio = (min, max) => {
