@@ -9,9 +9,16 @@ import {carregaTopo} from '../../services/carregaDados';
 
 //transformando a classe em um componente do react
 class Topo extends React.Component {
+  state = {
+    topo: {
+      boasVindas: '',
+      legenda: '',
+    },
+  };
 
-  atualizaTopo(){
+  atualizaTopo() {
     const retorno = carregaTopo();
+    this.setState({topo: retorno}); //atualizando o estado do componente
     console.log(retorno);
   }
 
@@ -24,8 +31,8 @@ class Topo extends React.Component {
     return (
       <View style={estilos.topo}>
         <Image source={logo} style={estilos.imagem} />
-        <Text style={estilos.boasVindas}>Olá Fernando</Text>
-        <Text style={estilos.legenda}>Encontre os melhores produtoes</Text>
+        <Text style={estilos.boasVindas}>{this.state.topo.boasVindas}</Text>
+        <Text style={estilos.legenda}>{this.state.topo.legenda}</Text>
       </View>
     );
   }
