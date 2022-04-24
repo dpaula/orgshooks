@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Text, FlatList } from 'react-native';
+import { Text, FlatList, StyleSheet } from 'react-native';
 
 import { carregaProdutores } from '../../services/carregaDados';
 
@@ -19,13 +19,28 @@ export default function Produtores() {
 
   }, []);
 
+  const topoLista = () => <Text style={estilos.titulo}>{titulo}</Text>;
+
   return (
     <FlatList
       //data é um array de objetos que será exibido na tela
       data={lista}
       //renderItem é uma funcao que recebe qual atributo será exibido da lista
-      renderItem={({ item: { nome } }) => <Text>{nome}</Text>}
+      renderItem={({ nome }) => <Text>{nome}</Text>}
+      //keyExtractor é uma funcao que recebe um objeto e retorna uma string que será utilizada como chave para cada item da lista
+      keyExtractor={({ nome }) => nome}
       //ListHeaderComponent é uma função que será exibida no topo da lista
-      ListHeaderComponent={() => <Text>{titulo}</Text>} />
+      ListHeaderComponent={topoLista} />
   );
 }
+
+const estilos = StyleSheet.create({
+  titulo: {
+    fontSize: 20,
+    lineHeight: 32,
+    marginHorizontal: 16,
+    marginTop: 16,
+    fontWeight: 'bold',
+    color: '#464646',
+  }
+});
