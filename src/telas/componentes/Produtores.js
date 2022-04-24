@@ -4,7 +4,7 @@ import { Text, FlatList, StyleSheet } from 'react-native';
 
 import { carregaProdutores } from '../../services/carregaDados';
 
-export default function Produtores() {
+export default function Produtores({ topo: Topo }) {
   //useState retorna um array com duas posições: 
   //o primeiro elemento é o valor inicial do estado, o segundo é uma função para atualizar o valor do estado
   //sempre deve ser o primeiro a ser declarado na função
@@ -16,17 +16,22 @@ export default function Produtores() {
     const retorno = carregaProdutores();
     setTitulo(retorno.titulo);
     setLista(retorno.lista);
+    console.log("CARREGADOOOOO!!");
 
   }, []);
 
-  const topoLista = () => <Text style={estilos.titulo}>{titulo}</Text>;
+  const topoLista = () =>
+    <>
+      <Topo />
+      <Text style={estilos.titulo}>{titulo}</Text>
+    </>
 
   return (
     <FlatList
       //data é um array de objetos que será exibido na tela
       data={lista}
       //renderItem é uma funcao que recebe qual atributo será exibido da lista
-      renderItem={({ nome }) => <Text>{nome}</Text>}
+      renderItem={({ item: { nome } }) => <Text>{nome}</Text>}
       //keyExtractor é uma funcao que recebe um objeto e retorna uma string que será utilizada como chave para cada item da lista
       keyExtractor={({ nome }) => nome}
       //ListHeaderComponent é uma função que será exibida no topo da lista
