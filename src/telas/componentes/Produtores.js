@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Text, FlatList, StyleSheet } from 'react-native';
 
+import Produtor from './Produtor';
+
 import { carregaProdutores } from '../../services/carregaDados';
 
 export default function Produtores({ topo: Topo }) {
@@ -31,7 +33,7 @@ export default function Produtores({ topo: Topo }) {
       //data é um array de objetos que será exibido na tela
       data={lista}
       //renderItem é uma funcao que recebe qual atributo será exibido da lista
-      renderItem={({ item: { nome } }) => <Text>{nome}</Text>}
+      renderItem={({ item }) => <Produtor {...item} />}
       //keyExtractor é uma funcao que recebe um objeto e retorna uma string que será utilizada como chave para cada item da lista
       keyExtractor={({ nome }) => nome}
       //ListHeaderComponent é uma função que será exibida no topo da lista
