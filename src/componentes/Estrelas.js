@@ -12,10 +12,24 @@ export default function Estrelas({
 }) {
   const estilos = estilosFuncao(grande);
 
+  const RenderEstrelas = () => { 
+    const listaEstrelas = [];
+    for (let i = 0; i < 5; i++) {
+      listaEstrelas.push(
+        <Image
+          key={i}
+          source={i < quantidadeAntiga ? estrela : estrelaCinza}
+          style={estilos.estrela}
+        />
+      );
+    }
+
+    return listaEstrelas;
+  }
+
   return (
     <View style={estilos.estrelas }>
-      <Image source={estrela} style={estilos.estrela} />
-      <Image source={estrela} style={estilos.estrela} />
+      <RenderEstrelas />
     </View>
   );
 }
